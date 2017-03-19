@@ -1,0 +1,3 @@
+Time benchmarks
+
+Python 1,000,000 primes: 15 seconds
