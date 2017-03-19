@@ -1,0 +1,5 @@
+import numpy as np
+
+def primeSieve(n):
+    numarray = np.array([1]*n)
+    
