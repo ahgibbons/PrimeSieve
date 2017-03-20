@@ -1,6 +1,6 @@
 [package]
-name = "sieve"
+name = "rust_sieve"
 version = "0.1.0"
-authors = ["Andrew"]
+authors = ["Andrew Gibbons <andrew.h.gibbons@protonmail.com>"]
 
 [dependencies]
