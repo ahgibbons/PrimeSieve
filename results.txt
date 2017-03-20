@@ -14,3 +14,12 @@ Python 10,000,000 limit: 3.16
 Rust   1,000,000 limit: 0.035
 Rust   10,000,000 limit: 0.240 
 Rust   100,000,000 limit: 2.9
+
+Time benchmarks -- On MacBook
+
+Python pysieve1.py      1,000,000 limit: 0.45
+Python pysieve_numpy.py 1,000,000 limit: 0.22
+Rust   1,000,000 limit: 0.015
+Rust   10,000,000 limit: 0.126
+C      1,000,000 limit: 0.020
+C      10,000,000 limit: 0.255
