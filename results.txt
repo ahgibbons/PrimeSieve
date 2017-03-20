@@ -1,3 +1,4 @@
-Time benchmarks
+Time benchmarks -- On Raspberry pi
 
-Python 1,000,000 primes: 15 seconds
+Python 1,000,000 primes: 3.5 seconds
+C      1,000,000 primes: 0.7 seconds
