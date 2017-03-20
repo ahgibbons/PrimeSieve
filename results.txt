@@ -2,3 +2,15 @@ Time benchmarks -- On Raspberry pi
 
 Python 1,000,000 primes: 3.5 seconds
 C      1,000,000 primes: 0.7 seconds
+
+
+Time benchmarks -- On Ubuntu
+
+C      1,000,000 limit: 0.058
+C      10,000,000 limit: 0.44
+C      100,000,000 limit: 4.2
+Python 1,000,000 limit: 0.36
+Python 10,000,000 limit: 3.16
+Rust   1,000,000 limit: 0.035
+Rust   10,000,000 limit: 0.240 
+Rust   100,000,000 limit: 2.9

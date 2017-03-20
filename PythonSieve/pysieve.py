@@ -6,17 +6,17 @@ def primeSieve(n):
     numarray[1]=0
 
     p = 2
-    primes = [0]*n
-    pc = 0
+    #primes = [0]*n
+    #pc = 0
+    primes=[]
     while p<n:
         if numarray[p]:
-            primes[pc] = p
-            pc+=1
+            primes.append(p)
             for i in range(2*p,n,p):
                 numarray[i] = 0
         p+=1
     
-    return primes[:pc]
+    return primes
 
 def main1(args):    
     n = int(args[1])

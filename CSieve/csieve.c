@@ -3,10 +3,10 @@
 
 
 int main(int argc, char *argv[]) {
-  int n;
-  int c;
-  int i;
-  int p;
+  int n;  // Upper limit to check
+  int c;  // Number of primes found
+  int i;  // Iterator
+  int p;  // Current prime
 
   if (argc != 3) {
     printf("Incorrect number of arguments!\n");
@@ -20,7 +20,9 @@ int main(int argc, char *argv[]) {
   }
   
   n = atoi(argv[1]);
-  int primeMask[n];
+
+  // Prime mask, 0 if not prime, 1 if prime
+  char* primeMask = malloc(sizeof(char)*n);
   
   for (i=0;i<n;i++) {
     primeMask[i] = 1;
@@ -29,8 +31,11 @@ int main(int argc, char *argv[]) {
   primeMask[0] = 0;
   primeMask[1] = 0;
 
-  p=2;
+  p=2; // Initial prime
   c=0;
+
+
+  // Main sieve loop
   while (p<n) {
     if (primeMask[p]==1) {
       fprintf(f,"%d\n",p);
@@ -42,8 +47,11 @@ int main(int argc, char *argv[]) {
     p++;
   }
 
-  printf("Wrote to file, found %d primes! Finished!\n", c);
 
+  free(primeMask);
+  printf("Found %d primes less than %d! Wrote to %s!\n",
+	 c, n, argv[2] );
+  
   return 0;
 }
 

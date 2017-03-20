@@ -1,2 +1,5 @@
+*.txt
 *~
 *.pyc
+rust_sieve/target/
+rust_sieve/target/*
