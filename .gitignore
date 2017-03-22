@@ -3,3 +3,5 @@
 *.pyc
 rust_sieve/target/
 rust_sieve/target/*
+HaskellSieve/.stack-work/
+HaskellSieve/.stack-work/*
