@@ -60,6 +60,7 @@ primeSieveIO n = do
 
 
 -- Prime sieve using STUArray
+
 primeSieveST :: Int -> [Int]
 primeSieveST n = map fst . filter (\(_,a) -> a) . assocs $ runSTUArray $ do
   arr <- newArray (1,n) True
@@ -67,19 +68,21 @@ primeSieveST n = map fst . filter (\(_,a) -> a) . assocs $ runSTUArray $ do
   let p = 2
   forM_ [p..n] $ \a -> do
       v <- readArray arr a
-      if v then markOff arr a n 
+      if v then markOffST arr a n 
            else return ()
   return arr
 
+
 primeSieveSTA :: Int -> UArray Int Bool
 primeSieveSTA n = runSTUArray $ do
-  arr <- newArray (1,n) True
+  arr <- newArray (1,n) True :: ST s (STUArray s Int Bool)
   writeArray arr 1 False
-  let p = 2
+  let p = 2 :: Int
   forM_ [p..n] $ \a -> do
       v <- readArray arr a
-      if v then markOff arr a n 
-           else return ()
+      when v $ do
+        forM_ [2*a, 2*a + a..n] $ \b ->
+          writeArray arr b False
   return arr
 
 primeSieveST2 :: Int -> [Int]
@@ -100,7 +103,10 @@ primesToUO :: Int -> [Int]
 primesToUO top | top > 1   = [i | (i,True) <- assocs $ sieveUO top]
                | otherwise = []
 
-markOff :: (Integral i,Ix i, MArray a Bool m)  => a i Bool -> i -> i -> m ()
+markOff :: (MArray a Bool m)  => a Int Bool -> Int -> Int -> m ()
 markOff arr a n = do
-  forM_ [2*a,2*a+a..n] $ \b -> writeArray arr b False 
+  forM_ [2*a,2*a+a..n] $ \b -> writeArray arr b False
 
+markOffST :: STUArray s Int Bool -> Int -> Int -> (ST s) ()
+markOffST arr a n = do
+  forM_ [2*a,2*a+a..n] $ \b -> writeArray arr b False
