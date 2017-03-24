@@ -1,0 +1,42 @@
+	Thu Mar 23 09:11 2017 Time and Allocation Profiling Report  (Final)
+
+	   HaskellSieve-exe +RTS -N -p -RTS 1000000 primes.txt
+
+	total time  =        0.31 secs   (306 ticks @ 1000 us, 1 processor)
+	total alloc = 563,982,712 bytes  (excludes profiling overheads)
+
+COST CENTRE    MODULE SRC                          %time %alloc
+
+markOff        Main   app/Main.hs:(60,1)-(61,53)    64.1   55.5
+primeSieveIO   Main   app/Main.hs:(35,1)-(44,54)    25.2   34.7
+mainIO         Main   app/Main.hs:(26,1)-(31,40)     5.9    9.8
+markOff.\      Main   app/Main.hs:61:32-53           3.6    0.0
+primeSieveIO.\ Main   app/Main.hs:(39,24)-(42,33)    1.3    0.0
+
+
+                                                                                       individual      inherited
+COST CENTRE       MODULE                SRC                         no.     entries  %time %alloc   %time %alloc
+
+MAIN              MAIN                  <built-in>                   50          0    0.0    0.0   100.0  100.0
+ CAF              Main                  <entire-module>              99          0    0.0    0.0     0.0    0.0
+  main            Main                  app/Main.hs:14:1-13         100          1    0.0    0.0     0.0    0.0
+  mainIO          Main                  app/Main.hs:(26,1)-(31,40)  101          1    0.0    0.0     0.0    0.0
+   mainIO.n       Main                  app/Main.hs:28:7-29         105          0    0.0    0.0     0.0    0.0
+ CAF              GHC.Conc.Signal       <entire-module>              94          0    0.0    0.0     0.0    0.0
+ CAF              GHC.IO.Encoding       <entire-module>              88          0    0.0    0.0     0.0    0.0
+ CAF              GHC.IO.Encoding.Iconv <entire-module>              86          0    0.0    0.0     0.0    0.0
+ CAF              GHC.IO.FD             <entire-module>              80          0    0.0    0.0     0.0    0.0
+ CAF              GHC.IO.Handle.FD      <entire-module>              78          0    0.0    0.0     0.0    0.0
+ CAF              GHC.IO.Handle.Text    <entire-module>              76          0    0.0    0.0     0.0    0.0
+ CAF              Text.Read.Lex         <entire-module>              67          0    0.0    0.0     0.0    0.0
+ CAF              GHC.Event.KQueue      <entire-module>              63          0    0.0    0.0     0.0    0.0
+ CAF              GHC.Event.Poll        <entire-module>              60          0    0.0    0.0     0.0    0.0
+ CAF              GHC.Event.Thread      <entire-module>              59          0    0.0    0.0     0.0    0.0
+ mainIO           Main                  app/Main.hs:(26,1)-(31,40)  102          0    5.9    9.8   100.0  100.0
+  mainIO.n        Main                  app/Main.hs:28:7-29         104          1    0.0    0.0     0.0    0.0
+  primeSieveIO    Main                  app/Main.hs:(35,1)-(44,54)  103          1   25.2   34.7    94.1   90.2
+   primeSieveIO.\ Main                  app/Main.hs:44:39           111    1000000    0.0    0.0     0.0    0.0
+   primeSieveIO.\ Main                  app/Main.hs:(39,24)-(42,33) 107     999999    1.3    0.0    69.0   55.5
+    markOff       Main                  app/Main.hs:(60,1)-(61,53)  108      78498   64.1   55.5    67.6   55.5
+     markOff.\    Main                  app/Main.hs:61:32-53        109    2775210    3.6    0.0     3.6    0.0
+   primeSieveIO.p Main                  app/Main.hs:38:7-9          106          1    0.0    0.0     0.0    0.0
